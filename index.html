@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>נעלי שני |נעליים לכל המשפחה</title>
+    <title>נעלי שני | נעליים לכל המשפחה</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -54,8 +54,8 @@
 
         /* --- Hero Section --- */
         .hero { 
-            height: 400px; 
-            background: linear-gradient(45deg, #1a1a1a, #444); 
+            height: 450px; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://xsosshirts.co.il/media/source/n12_1.jpg') center/cover; 
             border-radius: 20px; 
             margin-bottom: 50px;
             display: flex;
@@ -66,7 +66,7 @@
             flex-direction: column;
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
         /* --- Product Grid --- */
         .grid {
@@ -81,38 +81,35 @@
             overflow: hidden;
             transition: var(--transition);
             cursor: pointer;
-            position: relative;
             border: 1px solid #eaeaea;
         }
         .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,0,0,0.12); border-color: var(--gold); }
-        .card img { width: 100%; height: 300px; object-fit: cover; transition: var(--transition); }
-        .card:hover img { transform: scale(1.05); }
+        .card img { width: 100%; height: 300px; object-fit: cover; }
         
         .card-info { padding: 20px; text-align: center; }
         .card-info h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; }
         .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; }
 
         /* --- Single Product View --- */
-        .product-detail { display: flex; gap: 50px; align-items: flex-start; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .product-detail img { width: 50%; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .product-detail { display: flex; gap: 50px; align-items: flex-start; background: white; padding: 40px; border-radius: 20px; }
+        .product-detail img { width: 45%; border-radius: 15px; }
         .detail-text { flex: 1; }
-        .detail-text h2 { font-size: 3rem; margin-bottom: 20px; }
-        .detail-text p { font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 30px; }
-        .order-btn { background: var(--dark); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
+        .detail-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .order-btn { background: var(--dark); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .order-btn:hover { background: var(--gold); }
 
         /* --- Contact Page --- */
         .contact-container { text-align: center; }
-        .contact-card-img { width: 100%; max-width: 800px; border-radius: 25px; box-shadow: 0 30px 60px rgba(0,0,0,0.15); margin-bottom: 30px; }
+        .contact-card-img { width: 100%; max-width: 600px; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 30px; }
         .contact-info-box { font-size: 2.5rem; font-weight: 800; color: var(--dark); }
 
-        footer { text-align: center; padding: 60px; color: #888; font-size: 0.9rem; border-top: 1px solid #eee; margin-top: 50px; }
+        footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; margin-top: 50px; }
 
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
+            .search-bar { width: 100%; }
             .product-detail { flex-direction: column; }
             .product-detail img { width: 100%; }
-            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -123,12 +120,13 @@
     <nav>
         <ul>
             <li onclick="showPage('home')">דף הבית</li>
-            <li onclick="showPage('passover')">קולקצייה </li>
+            <li onclick="showPage('passover')">קולקצייה</li>
             <li onclick="showPage('contact')">צרו קשר</li>
         </ul>
     </nav>
-    
-       
+    <div class="search-bar">
+        <input type="text" id="mainSearch" placeholder="חפש דגם..." oninput="filterItems()">
+        <span>🔍</span>
     </div>
 </header>
 
@@ -141,8 +139,8 @@
 </main>
 
 <main id="passover" class="page">
-    <div class="hero" style="background: linear-gradient(45deg, #d4af37, #b8962d);">
-        <h1>קולקציית פסח חגיגית</h1>
+    <div class="hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://xsosshirts.co.il/media/source/n12_1.jpg') center/cover;">
+        <h1>קולקציית חג חגיגית</h1>
         <p>נעלי חג אלגנטיות לכל המשפחה</p>
     </div>
     <div class="grid" id="passoverGrid"></div>
@@ -150,7 +148,7 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני">
+        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני צור קשר">
         <div class="contact-info-box">
             <p>חייגו אלינו:</p>
             <a href="tel:029972662" style="text-decoration:none; color:var(--gold);">02-997-2662</a>
@@ -169,17 +167,19 @@
 
 <script>
     const items = [
-        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg: "סנדלי שורש מקוריים המשלבים נוחות מקסימלית ועמידות לטיולים ולעבודה." },
-        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg: "מגפי בלנסטון קלאסיים (Blundstone) בצבע כאמל יוקרתי. שילוב של סטייל ואיכות." },
-        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות לקטנטנים. רכות, נוחות ומעוצבות במיוחד לאירועים." },
-        { id: 4, name: "נעלי ספורט hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט נוחות במיוחד מתאימים לריצות והליכות ." },
-        { id: 5, name: "נעלי הרים", price: "₪280", category: "passover", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות במיוחד." },
-        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלים יוקרתיות מעורבמיוחד לשבתות וחגים." }
+        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "סנדלי שורש מקוריים המשלבים נוחות מקסימלית ועמידות לטיולים ולעבודה." },
+        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "מגפי בלנסטון קלאסיים (Blundstone) בצבע כאמל יוקרתי." },
+        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות לקטנטנים. רכות ונוחות." },
+        { id: 4, name: "נעלי ספורט Hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט נוחות במיוחד מתאימות לריצות והליכות." },
+        { id: 5, name: "נעלי הרים", price: "₪280", category: "all", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות במיוחד למסלולים מאתגרים." },
+        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעליים יוקרתיות מעור במיוחד לשבתות וחגים." }
     ];
 
     function renderGrids(filterText = "") {
         const homeGrid = document.getElementById('homeGrid');
         const passoverGrid = document.getElementById('passoverGrid');
+        if(!homeGrid || !passoverGrid) return;
+
         homeGrid.innerHTML = "";
         passoverGrid.innerHTML = "";
 
@@ -202,7 +202,8 @@
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
+        const target = document.getElementById(pageId);
+        if(target) target.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -215,7 +216,7 @@
                 <div class="detail-text">
                     <h2>${item.name}</h2>
                     <p class="price" style="font-size:2rem; margin-bottom:15px;">${item.price}</p>
-                    <p>${item.desc}</p>
+                    <p style="margin-bottom:30px; line-height:1.6;">${item.desc}</p>
                     <button class="order-btn" onclick="showPage('contact')">להזמנה טלפונית לחצו כאן</button>
                 </div>
             </div>
@@ -228,8 +229,8 @@
         renderGrids(text);
     }
 
-    // Initialize
-    renderGrids();
+    // הפעלה ראשונית
+    window.onload = () => renderGrids();
 </script>
 
 </body>
