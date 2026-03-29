@@ -18,9 +18,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Assistant', sans-serif; }
         body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; }
 
+        /* --- Header & Navigation --- */
         header {
             background: var(--white);
-            padding: 15px 5%;
+            padding: 10px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -30,27 +31,47 @@
             z-index: 2000;
         }
 
+        .logo-and-map { display: flex; align-items: center; gap: 15px; }
         .logo-area { font-size: 2rem; font-weight: 800; color: var(--dark); cursor: pointer; }
         .logo-area span { color: var(--gold); }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
+        .maps-btn-nav {
+            background-color: var(--google-blue);
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+        .maps-btn-nav:hover { transform: scale(1.05); background-color: #3367D6; }
+
+        nav ul { display: flex; list-style: none; gap: 20px; }
         nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 0.95rem; }
         nav ul li:hover { color: var(--gold); transform: translateY(-2px); }
 
-        .search-bar {
+        /* --- כפתור שעות פעילות --- */
+        .hours-btn {
             background: #eee;
-            padding: 8px 15px;
+            padding: 8px 18px;
             border-radius: 50px;
-            display: flex;
-            align-items: center;
-            width: 250px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
         }
-        .search-bar input { border: none; background: transparent; outline: none; width: 100%; font-size: 0.9rem; padding-right: 10px; }
+        .hours-btn:hover { background: #e0e0e0; color: var(--gold); }
 
+        /* --- Page Logic --- */
         .page { display: none; padding: 40px 8%; animation: fadeIn 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
+        /* --- Hero Section --- */
         .hero { 
             height: 450px; 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
@@ -66,6 +87,7 @@
         }
         .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
+        /* --- Product Grid --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -85,32 +107,52 @@
         .card-info { padding: 20px; text-align: center; }
         .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; }
 
+        /* --- Contact Page --- */
         .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
         .contact-card-img { width: 100%; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 30px; }
-        
-        .maps-btn {
-            background-color: var(--google-blue);
-            color: white;
-            text-decoration: none;
-            padding: 15px 40px;
-            border-radius: 50px;
-            font-weight: 800;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
-        }
-        .maps-btn:hover { transform: scale(1.05); background-color: #3367D6; }
 
+        /* --- Buttons --- */
         .order-btn { background: var(--dark); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .order-btn:hover { background: var(--gold); }
 
+        /* --- Modal/Popup Styles --- */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 3000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.6); 
+            align-items: center; justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            max-width: 90%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px; left: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #888;
+        }
+        .close-modal:hover { color: var(--dark); }
+
+        /* --- Footer --- */
         footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; margin-top: 50px; }
 
+        /* --- Media Queries --- */
         @media (max-width: 768px) {
-            header { flex-direction: column; gap: 15px; }
-            .search-bar { width: 100%; }
+            header { flex-direction: column; gap: 10px; padding: 10px; }
+            .logo-and-map { flex-direction: column; gap: 5px; }
+            nav ul { gap: 10px; }
             .hero h1 { font-size: 2.2rem; }
         }
     </style>
@@ -118,7 +160,12 @@
 <body>
 
 <header>
-    <div class="logo-area" onclick="showPage('home')">נעלי <span>שני</span></div>
+    <div class="logo-and-map">
+        <div class="logo-area" onclick="showPage('home')">נעלי <span>שני</span></div>
+        <a href="https://maps.app.goo.gl/uX7GfJ6W7ZpGfN4W9" target="_blank" class="maps-btn-nav">
+            ניווט 📍
+        </a>
+    </div>
     <nav>
         <ul>
             <li onclick="showPage('home')">דף הבית</li>
@@ -126,11 +173,37 @@
             <li onclick="showPage('contact')">צרו קשר</li>
         </ul>
     </nav>
-    <div class="search-bar">
-        <input type="text" id="mainSearch" placeholder="חפש דגם..." oninput="filterItems()">
-        <span>🔍</span>
-    </div>
+    <button class="hours-btn" onclick="openHoursModal()">שעות פעילות 🕒</button>
 </header>
+
+<div id="hoursModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('hoursModal')">&times;</span>
+        <h2 style="margin-bottom: 20px; color: var(--gold);">שעות פעילות</h2>
+        <ul style="list-style: none; text-align: right; line-height: 1.8; font-size: 1.1rem;">
+            <li><b>יום ראשון:</b> 9:30–20:00</li>
+            <li><b>יום שני:</b> 9:30–20:00</li>
+            <li><b>יום שלישי:</b> 9:30–20:00</li>
+            <li><b>יום רביעי (ערב פסח):</b> 9:30–20:00*</li>
+            <li><b>יום חמישי (חג פסח):</b> 9:30–20:00*</li>
+            <li><b>יום שישי:</b> 9:30–14:00</li>
+            <li><b>יום שבת:</b> סגור</li>
+        </ul>
+        <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">*ייתכנו שינויים בשעות בערבי חג ובחג.</p>
+    </div>
+</div>
+
+<div id="orderModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal('orderModal')">&times;</span>
+        <h2 style="margin-bottom: 10px;">הזמנה טלפונית</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 15px;">התקשרו אלינו לביצוע הזמנה:</p>
+        <a href="tel:029972662" style="text-decoration:none; color:var(--dark); font-size: 4rem; font-weight: 800; display: block; margin-bottom: 20px;">
+            02-997-2662
+        </a>
+        <button class="order-btn" onclick="closeModal('orderModal')">סגור</button>
+    </div>
+</div>
 
 <main id="home" class="page active">
     <div class="hero">
@@ -150,19 +223,13 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני - שער בנימין">
+        <img src="https://i.ibb.co/Xz9xH54/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני - שער בנימין">
         
         <div style="margin-bottom: 30px;">
             <p style="font-size: 1.2rem;">חייגו אלינו:</p>
             <a href="tel:029972662" style="text-decoration:none; color:var(--dark); font-size: 3rem; font-weight: 800;">02-997-2662</a>
         </div>
-
-        <div>
-            <a href="https://www.google.com/maps/search/?api=1&query=31.866083,35.260000" target="_blank" class="maps-btn">
-                ניווט ב-Google Maps 📍
-            </a>
-            <p style="margin-top: 15px; color: #666;">מתחם עליון 103, שער בנימין</p>
-        </div>
+        <p style="color: #666;">מתחם עליון 103, שער בנימין</p>
     </div>
 </main>
 
@@ -185,32 +252,32 @@
         { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלי עור יוקרתיות לשבתות וחגים." }
     ];
 
-    function renderGrids(filterText = "") {
+    function renderGrids() {
         const homeGrid = document.getElementById('homeGrid');
         const passoverGrid = document.getElementById('passoverGrid');
         if(!homeGrid || !passoverGrid) return;
         homeGrid.innerHTML = "";
         passoverGrid.innerHTML = "";
         items.forEach(item => {
-            if (item.name.toLowerCase().includes(filterText.toLowerCase())) {
-                const html = `
-                    <div class="card" onclick="viewProduct(${item.id})">
-                        <img src="${item.img}" alt="${item.name}">
-                        <div class="card-info">
-                            <h3>${item.name}</h3>
-                            <p class="price">${item.price}</p>
-                        </div>
+            const html = `
+                <div class="card" onclick="viewProduct(${item.id})">
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="card-info">
+                        <h3>${item.name}</h3>
+                        <p class="price">${item.price}</p>
                     </div>
-                `;
-                if (item.category === "passover") passoverGrid.innerHTML += html;
-                homeGrid.innerHTML += html;
-            }
+                </div>
+            `;
+            if (item.category === "passover") passoverGrid.innerHTML += html;
+            homeGrid.innerHTML += html;
         });
     }
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
+        closeModal('hoursModal'); // סגירת מודלים כשעוברים דף
+        closeModal('orderModal');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -218,21 +285,29 @@
         const item = items.find(i => i.id === id);
         const container = document.getElementById('productDetailContent');
         container.innerHTML = `
-            <div style="display:flex; gap:40px; background:white; padding:40px; border-radius:20px;">
-                <img src="${item.img}" style="width:45%; border-radius:15px;">
-                <div>
+            <div style="display:flex; gap:40px; background:white; padding:40px; border-radius:20px; flex-wrap:wrap;">
+                <img src="${item.img}" style="width:45%; min-width:280px; border-radius:15px; flex-grow:1;">
+                <div style="flex:1; min-width:280px;">
                     <h2>${item.name}</h2>
                     <p style="color:var(--gold); font-size:2rem; font-weight:800;">${item.price}</p>
-                    <p style="margin:20px 0;">${item.desc}</p>
-                    <button class="order-btn" onclick="showPage('contact')">להזמנה טלפונית</button>
+                    <p style="margin:20px 0; line-height:1.6;">${item.desc}</p>
+                    <button class="order-btn" onclick="openOrderModal()">להזמנה טלפונית</button>
                 </div>
             </div>
         `;
         showPage('productPage');
     }
 
-    function filterItems() {
-        renderGrids(document.getElementById('mainSearch').value);
+    // פונקציות לחלונות קופצים (Modals)
+    function openHoursModal() { document.getElementById('hoursModal').classList.add('active'); }
+    function openOrderModal() { document.getElementById('orderModal').classList.add('active'); }
+    function closeModal(modalId) { document.getElementById(modalId).classList.remove('active'); }
+
+    // סגירת חלון בלחיצה מחוץ לתוכן
+    window.onclick = function(event) {
+        if (event.target.classList.contains('modal')) {
+            event.target.classList.remove('active');
+        }
     }
 
     window.onload = () => renderGrids();
