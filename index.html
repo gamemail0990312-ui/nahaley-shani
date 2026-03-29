@@ -157,7 +157,7 @@
 <header>
     <div class="logo-and-map">
         <div class="logo-area" onclick="showPage('home')">נעלי <span>שני</span></div>
-        <a href="https://maps.app.goo.gl/YourMapID" target="_blank" class="maps-btn-nav">
+        <a href="https://www.google.com/maps?q=31.8661329,35.2597141" target="_blank" class="maps-btn-nav">
             ניווט למיקום המדויק 📍
         </a>
     </div>
@@ -214,7 +214,7 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-       <img src="https://lh3.googleusercontent.com/d/1ZtexsjScKVr2YIdCIYko1OsHeBoACzwt" alt="מבצע כרטיס פייטר" class="contact-img">
+       <img src="https://i.ibb.co/6R0yX86Y/fighter-card.jpg" alt="מבצע כרטיס פייטר" class="contact-img">
         <div style="margin-top: 20px;">
             <p style="font-size: 1.5rem; font-weight: 700;">חייגו אלינו:</p>
             <a href="tel:029972662" class="phone-link">02-997-2662</a>
@@ -232,21 +232,21 @@
 
 <footer>
     <p>© 2026 נעלי שני | שער בנימין | איכות וסטייל לכל המשפחה</p>
-    <p style="margin-top: 10px; font-size: 0.9rem;">
-        נבנה על ידי: <a href="mailto:gamemail0990312@gmail.com" style="color: #888; text-decoration: none;">gamemail0990312@gmail.com</a> | מתכנת אתרים
-    </p>
 </footer>
 
 <script>
     const items = [
         { id: 1, name: "סנדלי שורש מבוגרים", price: "₪320", oldPrice: "₪350", category: "all", img: "https://www.shoes2u.co.il/wp-content/uploads/2022/04/%D7%A9%D7%95%D7%A8%D7%A9-%D7%99%D7%95%D7%95%D7%A0%D7%99-1200x675.jpg", desc: "סנדלי שורש מקוריים למבוגרים. נוחות ועמידות ללא פשרות." },
         { id: 2, name: "סנדלי שורש ילדים", price: "₪220", oldPrice: "₪250", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "סנדלי שורש לילדים, עמידים למים ולטיולים." },
-        /* תוקן הקישור לתמונה הכסופה */
-        { id: 3, name: "נעלי שבת לבנות", price: "₪50", category: "passover", img: "https://drive.google.com/file/d/1QtiXtWtqPUvo_lUZ7S4QZo5rcTPbY9lJ/view?usp=drive_link", desc: "נעלי שבת חגיגיות לבנות  . מידות 22 עד 35. עד גמר המלאי!" },
+        // תוקן: קישור ישיר לתמונה שעובד ב-HTML
+        { id: 3, name: "נעלי שבת לבנות", price: "₪50", category: "passover", img: "https://i.ibb.co/39YC35gk/silver-kedma.jpg", desc: "נעלי שבת חגיגיות לבנות מבית KEDMA. מידות 22 עד 35. עד גמר המלאי!" },
         { id: 4, name: "נעלי ספורט HOKA", price: "החל מ-₪490", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי HOKA לנשים וגברים. שיכוך מקסימלי ונוחות יומיומית." },
         { id: 5, name: "נעלי הרים HI-TEC", price: "₪380", category: "all", img: "https://elital.co.il/cdn/shop/files/HI7149056008-01.jpg?v=1733904033&width=1946", desc: "מגפי הרים וטיולים מקצועיות מבית HI-TEC. עמידות ונוחות לכל שטח." },
         { id: 6, name: "נעלי אלגנט עור גברים", price: "₪300", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלי עור אמיתי איכותיות למראה חגיגי ויוקרתי." },
-        { id: 7, name: "מגפיים דמוי בלנסטון", price: "₪190 - ₪240", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "דמוי בלנסטון מעור מבית פפאיה ופאמה. תינוקות (23-27) ב-190₪ | ילדים (28-35) ב-220₪ | נוער (36-40) ב-240₪." }
+        { id: 7, name: "מגפיים דמוי בלנסטון", price: "₪190 - ₪240", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "דמוי בלנסטון מעור מבית פפאיה ופאמה." },
+        // מוצרים חדשים שהתבקשו:
+        { id: 8, name: "סנדלי בנים מעור לילדים", price: "₪160", category: "all", img: "https://i.ibb.co/6R0yX86Y/boys-leather-sandals.jpg", desc: "סנדלי מעור איכותיים ועמידים לבנים." },
+        { id: 9, name: "כפכפי דמוי נאות", price: "₪70", category: "all", img: "https://i.ibb.co/fdc8c9/sandals-mockup.png", desc: "כפכפים נוחים דמוי נאות (לא מעור). מידות 28 עד 41." }
     ];
 
     function renderGrids() {
