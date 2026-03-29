@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נעלי שני - הצעד הבא שלך</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a1a;
+            --accent: #d4af37; /* זהב עדין */
+            --light: #f4f4f4;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--primary);
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cart-icon {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #b8962d;
+        }
+
+        /* Products Grid */
+        .container {
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #eee;
+            padding: 15px;
+            text-align: center;
+            transition: 0.3s;
+            border-radius: 8px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .price {
+            display: block;
+            color: var(--accent);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--primary);
+            background: none;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">נעלי שני</div>
+        <ul class="nav-links">
+            <li><a href="#">דף הבית</a></li>
+            <li><a href="#">קולקציה</a></li>
+            <li><a href="#">עלינו</a></li>
+            <li><a href="#">צור קשר</a></li>
+        </ul>
+        <div class="cart-icon">🛒 עגלה (<span id="cart-count">0</span>)</div>
+    </nav>
+
+    <header class="hero">
+        <h1>הצעד הבא שלך מתחיל כאן</h1>
+        <p>קולקציית 2026 החדשה כבר בחנות</p><br>
+        <a href="#shop" class="btn">לקולקציה החדשה</a>
+    </header>
+
+    <main class="container" id="shop">
+        <h2 class="section-title">הדגמים שלנו</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="נעלי ריצה">
+                <h3>סניקרס Red Speed</h3>
+                <span class="price">₪349</span>
+                <button class="add-to-cart" onclick="addToCart('סניקרס Red Speed')">הוספה לסל</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500" alt="נעלי אופנה">
+                <h3>נעלי Urban High</h3>
+                <span class="price">₪420</span>
+                <button class="add-to-cart" onclick="addToCart('נעלי Urban High')">הוספה לסל</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500" alt="נעלי עקב">
+                <h3>עקבי Classic Gold</h3>
+                <span class="price">₪290</span>
+                <button class="add-to-cart" onclick="addToCart('עקבי Classic Gold')">הוספה לסל</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500" alt="נעלי ילדים">
+                <h3>מגפוני עור חום</h3>
+                <span class="price">₪550</span>
+                <button class="add-to-cart" onclick="addToCart('מגפוני עור חום')">הוספה לסל</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500" alt="ואנס">
+                <h3>נעלי Casual Blue</h3>
+                <span class="price">₪280</span>
+                <button class="add-to-cart" onclick="addToCart('נעלי Casual Blue')">הוספה לסל</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 נעלי שני | כל הזכויות שמורות</p>
+    </footer>
+
+    <script>
+        let count = 0;
+        function addToCart(itemName) {
+            count++;
+            document.getElementById('cart-count').innerText = count;
+            alert('המוצר "' + itemName + '" נוסף לסל הקניות שלך בהצלחה!');
+        }
+    </script>
+</body>
+</html>
