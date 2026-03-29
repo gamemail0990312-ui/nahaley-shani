@@ -13,11 +13,18 @@
             --white: #ffffff;
             --google-blue: #4285F4;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --font-size-base: 1rem;
         }
 
         /* עיצוב כללי */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Assistant', sans-serif; }
-        body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
+        body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; line-height: 1.6; transition: filter 0.3s; }
+
+        /* מצבי נגישות */
+        body.grayscale { filter: grayscale(100%); }
+        body.high-contrast { background-color: #000 !important; color: #fff !important; }
+        body.high-contrast .card, body.high-contrast header, body.high-contrast .modal-content { background: #1a1a1a; border-color: #fff; color: #fff; }
+        body.underline-links a, body.underline-links li { text-decoration: underline !important; }
 
         /* --- Header & Navigation --- */
         header {
@@ -36,7 +43,6 @@
         .logo-area { font-size: 2.2rem; font-weight: 800; color: var(--dark); cursor: pointer; }
         .logo-area span { color: var(--gold); }
 
-        /* כפתור גוגל מפות בדשבורד */
         .maps-btn-nav {
             background-color: var(--google-blue);
             color: white;
@@ -57,7 +63,6 @@
         nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 1rem; position: relative; }
         nav ul li:hover { color: var(--gold); }
 
-        /* כפתור שעות פעילות */
         .hours-btn {
             background: #f0f0f0;
             padding: 10px 25px;
@@ -107,7 +112,6 @@
         .contact-container { text-align: center; max-width: 900px; margin: 0 auto; }
         .contact-card-img { width: 100%; max-width: 700px; border-radius: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); margin-bottom: 40px; }
         
-        /* מספר טלפון גדול */
         .phone-link { text-decoration: none; color: var(--dark); font-size: 3.5rem; font-weight: 800; transition: 0.3s; display: block; margin: 20px 0; }
         .phone-link:hover { color: var(--gold); }
 
@@ -130,16 +134,36 @@
         .hours-list { list-style: none; text-align: right; margin: 25px 0; font-size: 1.2rem; }
         .hours-list li { border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between; }
         
-        /* מספר טלפון ענק במודל */
         .phone-big-modal { font-size: 4.5rem; font-weight: 800; color: var(--dark); text-decoration: none; display: block; margin: 30px 0; }
-
         .order-btn-big { background: var(--dark); color: white; padding: 18px 50px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
         .order-btn-big:hover { background: var(--gold); }
 
-        /* --- Footer --- */
+        /* --- כפתור הנגשה --- */
+        .accessibility-trigger {
+            position: fixed; bottom: 20px; left: 20px;
+            background: #2b3e50; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 9999; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid white;
+        }
+
+        .accessibility-menu {
+            display: none; position: fixed; bottom: 90px; left: 20px;
+            background: white; width: 280px; border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 20px; z-index: 9999;
+        }
+        .accessibility-menu.active { display: block; }
+        .accessibility-menu h4 { margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+        .acc-btn {
+            display: block; width: 100%; padding: 10px; margin-bottom: 8px;
+            background: #f0f0f0; border: none; border-radius: 8px;
+            text-align: right; cursor: pointer; font-weight: 700; transition: 0.2s;
+        }
+        .acc-btn:hover { background: #e0e0e0; }
+        .acc-btn.active { background: var(--gold); color: white; }
+
         footer { text-align: center; padding: 60px; color: #aaa; border-top: 1px solid #eee; margin-top: 80px; }
 
-        /* --- Mobile --- */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 20px; gap: 15px; }
             .logo-and-map { flex-direction: column; width: 100%; }
@@ -149,6 +173,17 @@
     </style>
 </head>
 <body>
+
+<div class="accessibility-trigger" onclick="toggleAccMenu()" title="תפריט נגישות">♿</div>
+<div class="accessibility-menu" id="accMenu">
+    <h4>תפריט נגישות</h4>
+    <button class="acc-btn" onclick="accAction('zoom-in')">➕ הגדל טקסט</button>
+    <button class="acc-btn" onclick="accAction('zoom-out')">➖ הקטן טקסט</button>
+    <button class="acc-btn" onclick="accAction('grayscale')" id="btn-gray">🌓 שחור לבן</button>
+    <button class="acc-btn" onclick="accAction('contrast')" id="btn-contrast">👁️ ניגודיות גבוהה</button>
+    <button class="acc-btn" onclick="accAction('underline')" id="btn-underline">🔗 הדגשת קישורים</button>
+    <button class="acc-btn" onclick="accAction('reset')" style="background: #ff4444; color: white; margin-top: 10px;">🔄 איפוס נגישות</button>
+</div>
 
 <header>
     <div class="logo-and-map">
@@ -212,8 +247,7 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://lh3.googleusercontent.com/u/0/d/1ZtexsjScKVr2YIdCIYko1OsHeBoACzwt=w1000-h1000-p-k-no-nu" class="contact-card-img" alt="נעלי שני שער בנימין">
-        
+        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני שער בנימין">
         <div style="margin-top: 30px;">
             <p style="font-size: 1.5rem; font-weight: 700;">חייגו אלינו:</p>
             <a href="tel:029972662" class="phone-link">02-997-2662</a>
@@ -286,6 +320,37 @@
             </div>
         `;
         showPage('productPage');
+    }
+
+    /* פונקציות הנגשה */
+    function toggleAccMenu() {
+        document.getElementById('accMenu').classList.toggle('active');
+    }
+
+    let currentZoom = 1;
+    function accAction(action) {
+        const body = document.body;
+        if(action === 'grayscale') {
+            body.classList.toggle('grayscale');
+            document.getElementById('btn-gray').classList.toggle('active');
+        } else if(action === 'contrast') {
+            body.classList.toggle('high-contrast');
+            document.getElementById('btn-contrast').classList.toggle('active');
+        } else if(action === 'underline') {
+            body.classList.toggle('underline-links');
+            document.getElementById('btn-underline').classList.toggle('active');
+        } else if(action === 'zoom-in') {
+            currentZoom += 0.1;
+            body.style.fontSize = currentZoom + 'em';
+        } else if(action === 'zoom-out') {
+            currentZoom -= 0.1;
+            body.style.fontSize = currentZoom + 'em';
+        } else if(action === 'reset') {
+            body.className = '';
+            body.style.fontSize = '1em';
+            currentZoom = 1;
+            document.querySelectorAll('.acc-btn').forEach(b => b.classList.remove('active'));
+        }
     }
 
     function openModal(id) { document.getElementById(id).classList.add('active'); }
