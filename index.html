@@ -15,8 +15,9 @@
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
+        /* עיצוב כללי */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Assistant', sans-serif; }
-        body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; }
+        body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; line-height: 1.6; }
 
         /* --- Header & Navigation --- */
         header {
@@ -35,6 +36,7 @@
         .logo-area { font-size: 2.2rem; font-weight: 800; color: var(--dark); cursor: pointer; }
         .logo-area span { color: var(--gold); }
 
+        /* כפתור גוגל מפות בדשבורד */
         .maps-btn-nav {
             background-color: var(--google-blue);
             color: white;
@@ -53,13 +55,12 @@
 
         nav ul { display: flex; list-style: none; gap: 30px; }
         nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 1rem; position: relative; }
-        nav ul li:after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; right: 0; background: var(--gold); transition: 0.3s; }
-        nav ul li:hover:after { width: 100%; }
         nav ul li:hover { color: var(--gold); }
 
+        /* כפתור שעות פעילות */
         .hours-btn {
             background: #f0f0f0;
-            padding: 10px 22px;
+            padding: 10px 25px;
             border-radius: 50px;
             border: 2px solid transparent;
             font-weight: 800;
@@ -71,7 +72,7 @@
         }
         .hours-btn:hover { background: var(--white); border-color: var(--gold); color: var(--gold); }
 
-        /* --- Pages & Animations --- */
+        /* --- דפים ואנימציות --- */
         .page { display: none; padding: 50px 8%; animation: fadeIn 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -82,86 +83,58 @@
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
             border-radius: 30px; 
             margin-bottom: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            flex-direction: column;
+            display: flex; align-items: center; justify-content: center;
+            color: white; text-align: center; flex-direction: column;
             box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
         .hero h1 { font-size: 4rem; margin-bottom: 15px; text-shadow: 3px 3px 15px rgba(0,0,0,0.6); }
-        .hero p { font-size: 1.5rem; font-weight: 400; opacity: 0.9; }
 
-        /* --- Product Grid --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
-        }
+        /* --- גריד מוצרים --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
 
         .card {
-            background: var(--white);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: var(--transition);
-            cursor: pointer;
-            border: 1px solid #eee;
-            position: relative;
+            background: var(--white); border-radius: 20px; overflow: hidden;
+            transition: var(--transition); cursor: pointer; border: 1px solid #eee; position: relative;
         }
         .card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-color: var(--gold); }
         .card img { width: 100%; height: 350px; object-fit: cover; transition: 0.5s; }
         .card:hover img { scale: 1.05; }
         .card-info { padding: 25px; text-align: center; }
-        .card-info h3 { margin-bottom: 10px; font-size: 1.3rem; }
+        .card-info h3 { font-size: 1.3rem; margin-bottom: 10px; }
         .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.4rem; }
 
-        /* --- Contact Page --- */
+        /* --- עמוד צרו קשר --- */
         .contact-container { text-align: center; max-width: 900px; margin: 0 auto; }
         .contact-card-img { width: 100%; max-width: 700px; border-radius: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); margin-bottom: 40px; }
         
+        /* מספר טלפון גדול */
         .phone-link { text-decoration: none; color: var(--dark); font-size: 3.5rem; font-weight: 800; transition: 0.3s; display: block; margin: 20px 0; }
-        .phone-link:hover { color: var(--gold); transform: scale(1.02); }
+        .phone-link:hover { color: var(--gold); }
 
         /* --- Modals (Popups) --- */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 5000; 
-            left: 0; top: 0; 
-            width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.8); 
-            align-items: center; justify-content: center;
+            display: none; position: fixed; z-index: 5000; 
+            left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center;
             backdrop-filter: blur(8px);
         }
         .modal.active { display: flex; }
         .modal-content {
-            background-color: white;
-            padding: 50px;
-            border-radius: 30px;
-            text-align: center;
-            position: relative;
-            max-width: 550px;
-            width: 90%;
+            background-color: white; padding: 50px; border-radius: 30px;
+            text-align: center; position: relative; max-width: 550px; width: 90%;
             box-shadow: 0 30px 70px rgba(0,0,0,0.5);
         }
-        .close-modal {
-            position: absolute;
-            top: 20px; left: 20px;
-            font-size: 2rem;
-            cursor: pointer;
-            color: #ccc;
-            transition: 0.3s;
-        }
-        .close-modal:hover { color: var(--dark); }
+        .close-modal { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #ccc; }
 
-        .hours-list { list-style: none; text-align: right; margin: 25px 0; line-height: 2; font-size: 1.2rem; }
-        .hours-list li { border-bottom: 1px solid #eee; padding: 5px 0; display: flex; justify-content: space-between; }
+        /* רשימת שעות מסודרת */
+        .hours-list { list-style: none; text-align: right; margin: 25px 0; font-size: 1.2rem; }
+        .hours-list li { border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between; }
         
+        /* מספר טלפון ענק במודל */
         .phone-big-modal { font-size: 4.5rem; font-weight: 800; color: var(--dark); text-decoration: none; display: block; margin: 30px 0; }
 
         .order-btn-big { background: var(--dark); color: white; padding: 18px 50px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
-        .order-btn-big:hover { background: var(--gold); transform: translateY(-3px); }
+        .order-btn-big:hover { background: var(--gold); }
 
         /* --- Footer --- */
         footer { text-align: center; padding: 60px; color: #aaa; border-top: 1px solid #eee; margin-top: 80px; }
@@ -170,8 +143,8 @@
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 20px; gap: 15px; }
             .logo-and-map { flex-direction: column; width: 100%; }
-            .phone-link, .phone-big-modal { font-size: 2.5rem; }
-            .hero h1 { font-size: 2.5rem; }
+            .phone-link { font-size: 2.5rem; }
+            .phone-big-modal { font-size: 3rem; }
         }
     </style>
 </head>
@@ -180,7 +153,7 @@
 <header>
     <div class="logo-and-map">
         <div class="logo-area" onclick="showPage('home')">נעלי <span>שני</span></div>
-        <a href="https://www.google.com/maps/search/?api=1&query=31.866083,35.260000" target="_blank" class="maps-btn-nav">
+        <a href="https://www.google.com/maps?q=31.866083,35.260000" target="_blank" class="maps-btn-nav">
             ניווט ב-Google Maps 📍
         </a>
     </div>
@@ -197,13 +170,13 @@
 <div id="hoursModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('hoursModal')">×</span>
-        <h2 style="color: var(--gold); font-size: 2rem;">שעות פעילות</h2>
+        <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 20px;">שעות פעילות</h2>
         <ul class="hours-list">
             <li><span>יום ראשון:</span> <span>9:30–20:00</span></li>
             <li><span>יום שני:</span> <span>9:30–20:00</span></li>
             <li><span>יום שלישי:</span> <span>9:30–20:00</span></li>
             <li><span>יום רביעי (ערב פסח):</span> <span>9:30–20:00</span></li>
-            <li><span>יום חמישי (חג פסח):</span> <span>9:30–20:00</span></li>
+            <li><span>יום חמישי (פסח):</span> <span>9:30–20:00</span></li>
             <li><span>יום שישי:</span> <span>9:30–14:00</span></li>
             <li><span>יום שבת:</span> <span>סגור</span></li>
         </ul>
@@ -214,17 +187,17 @@
 <div id="orderModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('orderModal')">×</span>
-        <h2>הזמנה טלפונית</h2>
-        <p style="font-size: 1.3rem; margin-top: 10px;">חייגו אלינו עכשיו:</p>
+        <h2>הזמנה טלפונית מהירה</h2>
+        <p style="margin-top: 15px;">חייגו אלינו לביצוע הזמנה:</p>
         <a href="tel:029972662" class="phone-big-modal">02-997-2662</a>
-        <button class="order-btn-big" onclick="closeModal('orderModal')">חזרה לקטלוג</button>
+        <button class="order-btn-big" onclick="closeModal('orderModal')">חזרה לקניות</button>
     </div>
 </div>
 
 <main id="home" class="page active">
     <div class="hero">
         <h1>הקולקציה החדשה 2026</h1>
-        <p>נעלי איכות לכל המשפחה במחירים ללא תחרות</p>
+        <p>שער בנימין | מתחם עליון 103</p>
     </div>
     <div class="grid" id="homeGrid"></div>
 </main>
@@ -232,48 +205,42 @@
 <main id="passover" class="page">
     <div class="hero" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://xsosshirts.co.il/media/source/n12_1.jpg');">
         <h1>קולקציית חג חגיגית</h1>
-        <p>הנעליים הכי יפות לשולחן הסדר</p>
+        <p>נעליים אלגנטיות לכל המשפחה</p>
     </div>
     <div class="grid" id="passoverGrid"></div>
 </main>
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני - שער בנימין">
+        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני שער בנימין">
         
-        <div style="margin: 40px 0;">
-            <p style="font-size: 1.5rem; font-weight: 700;">זמינים עבורכם בטלפון:</p>
+        <div style="margin-top: 30px;">
+            <p style="font-size: 1.5rem; font-weight: 700;">חייגו אלינו:</p>
             <a href="tel:029972662" class="phone-link">02-997-2662</a>
-        </div>
-        
-        <div style="background: white; padding: 30px; border-radius: 20px; display: inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-            <p style="font-size: 1.2rem; margin-bottom: 10px;">📍 <b>כתובתנו:</b></p>
-            <p style="font-size: 1.4rem;">מתחם עליון 103, שער בנימין</p>
+            <p style="font-size: 1.3rem; color: #555;">📍 מתחם עליון 103, שער בנימין</p>
         </div>
     </div>
 </main>
 
 <main id="productPage" class="page">
     <div onclick="showPage('home')" style="cursor:pointer; margin-bottom:30px; font-weight:800; display: flex; align-items: center; gap: 10px;">
-        <span style="font-size: 1.5rem;">→</span> חזרה לקטלוג המוצרים
+        <span style="font-size: 1.5rem;">→</span> חזרה לקטלוג
     </div>
     <div id="productDetailContent"></div>
 </main>
 
 <footer>
-    <p>© 2026 נעלי שני - שער בנימין | כל הזכויות שמורות</p>
+    <p>© 2026 נעלי שני - שער בנימין | איכות וסטייל לכל המשפחה</p>
 </footer>
 
 <script>
     const items = [
-        { id: 1, name: "סנדלי שורש מקוריים", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "הסנדלים המוכרים והאהובים, עמידים לכל תנאי שטח ונוחים במיוחד." },
-        { id: 2, name: "מגפי בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "מגפי עבודה ופנאי איכותיים, עמידות מקסימלית וסטייל בלתי מתפשר." },
-        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעליים רכות, נוחות ואלגנטיות במיוחד לקטנטנים לכבוד החג." },
-        { id: 4, name: "נעלי ספורט Hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי הריצה הנוחות בעולם, עם שיכוך זעזועים מתקדם." },
-        { id: 5, name: "נעלי הרים מקצועיות", price: "₪280", category: "all", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "מתאימות לטיולים מאתגרים, אחיזת שטח מעולה והגנה על הרגל." },
-        { id: 6, name: "נעלי אלגנט לגבר - פסח", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלי עור יוקרתיות, מושלמות לחליפה ולמראה חגיגי בסדר הפסח." },
-        { id: 7, name: "נעלי בובה לנשים", price: "₪180", category: "all", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_x1r7p_W2V9C2-H-M_G1m7UqV6U2Z6W6W6W&usqp=CAU", desc: "נעלי בובה קלאסיות ונוחות ליומיום ולערב." },
-        { id: 8, name: "סנדלי נוחות אופנתיים", price: "₪220", category: "passover", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_x1r7p_W2V9C2-H-M_G1m7UqV6U2Z6W6W6W&usqp=CAU", desc: "שילוב מושלם בין מראה מודרני לנוחות מירבית." }
+        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "סנדלי שורש מקוריים המשלבים נוחות ועמידות לכל תנאי שטח." },
+        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "מגפי בלנסטון קלאסיים בצבע כאמל, עמידות ונוחות מקסימלית." },
+        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות ורכות במיוחד לקטנטנים." },
+        { id: 4, name: "נעלי ספורט Hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט מקצועיות עם שיכוך זעזועים מתקדם." },
+        { id: 5, name: "נעלי הרים", price: "₪280", category: "all", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות המותאמות למסלולי הליכה מאתגרים." },
+        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלי עור יוקרתיות למראה חגיגי ומרשים במיוחד." }
     ];
 
     function renderGrids() {
@@ -294,9 +261,7 @@
                 </div>
             `;
             homeGrid.innerHTML += html;
-            if (item.category === "passover") {
-                passoverGrid.innerHTML += html;
-            }
+            if (item.category === "passover") passoverGrid.innerHTML += html;
         });
     }
 
@@ -304,9 +269,6 @@
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
         document.getElementById(pageId).classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        // סגירת מודלים אם פתוחים
-        closeModal('hoursModal');
-        closeModal('orderModal');
     }
 
     function viewProduct(id) {
@@ -329,7 +291,6 @@
     function openModal(id) { document.getElementById(id).classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
 
-    // סגירה בלחיצה בחוץ
     window.onclick = function(event) {
         if (event.target.classList.contains('modal')) {
             event.target.classList.remove('active');
