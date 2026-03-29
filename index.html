@@ -11,6 +11,7 @@
             --dark: #121212;
             --gray: #f8f9fa;
             --white: #ffffff;
+            --waze: #33f1ff;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
@@ -55,7 +56,7 @@
         /* --- Hero Section --- */
         .hero { 
             height: 450px; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
             border-radius: 20px; 
             margin-bottom: 50px;
             display: flex;
@@ -90,6 +91,27 @@
         .card-info h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; }
         .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; }
 
+        /* --- Contact Page & Waze Button --- */
+        .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
+        .contact-card-img { width: 100%; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 30px; }
+        .contact-info-box { margin-bottom: 30px; }
+        .contact-info-box h2 { font-size: 3rem; margin-bottom: 10px; }
+        
+        .waze-btn {
+            background-color: #33f1ff;
+            color: #000;
+            text-decoration: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-weight: 800;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(51, 241, 255, 0.4);
+        }
+        .waze-btn:hover { transform: scale(1.05); background-color: #2edce9; }
+
         /* --- Single Product View --- */
         .product-detail { display: flex; gap: 50px; align-items: flex-start; background: white; padding: 40px; border-radius: 20px; }
         .product-detail img { width: 45%; border-radius: 15px; }
@@ -98,11 +120,6 @@
         .order-btn { background: var(--dark); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .order-btn:hover { background: var(--gold); }
 
-        /* --- Contact Page --- */
-        .contact-container { text-align: center; }
-        .contact-card-img { width: 100%; max-width: 600px; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        .contact-info-box { font-size: 2.5rem; font-weight: 800; color: var(--dark); }
-
         footer { text-align: center; padding: 40px; color: #888; border-top: 1px solid #eee; margin-top: 50px; }
 
         @media (max-width: 768px) {
@@ -110,6 +127,7 @@
             .search-bar { width: 100%; }
             .product-detail { flex-direction: column; }
             .product-detail img { width: 100%; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -148,10 +166,18 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" alt="נעלי שני צור קשר">
+        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני שער בנימין">
+        
         <div class="contact-info-box">
-            <p>חייגו אלינו:</p>
-            <a href="tel:029972662" style="text-decoration:none; color:var(--gold);">02-997-2662</a>
+            <p style="font-size: 1.2rem; margin-bottom: 5px;">חייגו אלינו:</p>
+            <a href="tel:029972662" style="text-decoration:none; color:var(--dark); font-size: 3rem; font-weight: 800;">02-997-2662</a>
+        </div>
+
+        <div style="margin-top: 20px;">
+            <a href="https://waze.com/ul?q=נעלי%20שני%20שער%20בנימין" target="_blank" class="waze-btn">
+                ניווט לחנות ב-Waze 🚗
+            </a>
+            <p style="margin-top: 15px; color: #666;">מתחם עליון 103, שער בנימין</p>
         </div>
     </div>
 </main>
@@ -229,7 +255,6 @@
         renderGrids(text);
     }
 
-    // הפעלה ראשונית
     window.onload = () => renderGrids();
 </script>
 
