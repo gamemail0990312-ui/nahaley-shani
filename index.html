@@ -11,14 +11,13 @@
             --dark: #121212;
             --gray: #f8f9fa;
             --white: #ffffff;
-            --waze: #33f1ff;
+            --google-blue: #4285F4;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Assistant', sans-serif; }
         body { background-color: var(--gray); color: var(--dark); overflow-x: hidden; }
 
-        /* --- Header & Navigation --- */
         header {
             background: var(--white);
             padding: 15px 5%;
@@ -31,11 +30,11 @@
             z-index: 2000;
         }
 
-        .logo-area { font-size: 2rem; font-weight: 800; letter-spacing: -1px; color: var(--dark); cursor: pointer; }
+        .logo-area { font-size: 2rem; font-weight: 800; color: var(--dark); cursor: pointer; }
         .logo-area span { color: var(--gold); }
 
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); text-transform: uppercase; font-size: 0.95rem; }
+        nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 0.95rem; }
         nav ul li:hover { color: var(--gold); transform: translateY(-2px); }
 
         .search-bar {
@@ -48,12 +47,10 @@
         }
         .search-bar input { border: none; background: transparent; outline: none; width: 100%; font-size: 0.9rem; padding-right: 10px; }
 
-        /* --- Page Logic --- */
         .page { display: none; padding: 40px 8%; animation: fadeIn 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Hero Section --- */
         .hero { 
             height: 450px; 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
@@ -69,7 +66,6 @@
         }
         .hero h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
 
-        /* --- Product Grid --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -86,20 +82,15 @@
         }
         .card:hover { transform: translateY(-12px); box-shadow: 0 25px 50px rgba(0,0,0,0.12); border-color: var(--gold); }
         .card img { width: 100%; height: 300px; object-fit: cover; }
-        
         .card-info { padding: 20px; text-align: center; }
-        .card-info h3 { font-size: 1.4rem; margin-bottom: 8px; font-weight: 700; }
         .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; }
 
-        /* --- Contact Page & Waze Button --- */
         .contact-container { text-align: center; max-width: 800px; margin: 0 auto; }
         .contact-card-img { width: 100%; border-radius: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); margin-bottom: 30px; }
-        .contact-info-box { margin-bottom: 30px; }
-        .contact-info-box h2 { font-size: 3rem; margin-bottom: 10px; }
         
-        .waze-btn {
-            background-color: #33f1ff;
-            color: #000;
+        .maps-btn {
+            background-color: var(--google-blue);
+            color: white;
             text-decoration: none;
             padding: 15px 40px;
             border-radius: 50px;
@@ -108,15 +99,10 @@
             align-items: center;
             gap: 10px;
             transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(51, 241, 255, 0.4);
+            box-shadow: 0 5px 15px rgba(66, 133, 244, 0.4);
         }
-        .waze-btn:hover { transform: scale(1.05); background-color: #2edce9; }
+        .maps-btn:hover { transform: scale(1.05); background-color: #3367D6; }
 
-        /* --- Single Product View --- */
-        .product-detail { display: flex; gap: 50px; align-items: flex-start; background: white; padding: 40px; border-radius: 20px; }
-        .product-detail img { width: 45%; border-radius: 15px; }
-        .detail-text { flex: 1; }
-        .detail-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
         .order-btn { background: var(--dark); color: white; padding: 15px 40px; border: none; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.3s; }
         .order-btn:hover { background: var(--gold); }
 
@@ -125,8 +111,6 @@
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; }
             .search-bar { width: 100%; }
-            .product-detail { flex-direction: column; }
-            .product-detail img { width: 100%; }
             .hero h1 { font-size: 2.2rem; }
         }
     </style>
@@ -166,16 +150,16 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני שער בנימין">
+        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני - שער בנימין">
         
-        <div class="contact-info-box">
-            <p style="font-size: 1.2rem; margin-bottom: 5px;">חייגו אלינו:</p>
+        <div style="margin-bottom: 30px;">
+            <p style="font-size: 1.2rem;">חייגו אלינו:</p>
             <a href="tel:029972662" style="text-decoration:none; color:var(--dark); font-size: 3rem; font-weight: 800;">02-997-2662</a>
         </div>
 
-        <div style="margin-top: 20px;">
-            <a href="https://waze.com/ul?q=נעלי%20שני%20שער%20בנימין" target="_blank" class="waze-btn">
-                ניווט לחנות ב-Waze 🚗
+        <div>
+            <a href="https://www.google.com/maps/search/?api=1&query=31.866083,35.260000" target="_blank" class="maps-btn">
+                ניווט ב-Google Maps 📍
             </a>
             <p style="margin-top: 15px; color: #666;">מתחם עליון 103, שער בנימין</p>
         </div>
@@ -188,27 +172,25 @@
 </main>
 
 <footer>
-    <p>&copy; 2026 נעלי שני - שער בנימין. מעבדים כרטיסי אשראי של "פייטר".</p>
+    <p>© 2026 נעלי שני - שער בנימין.</p>
 </footer>
 
 <script>
     const items = [
-        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "סנדלי שורש מקוריים המשלבים נוחות מקסימלית ועמידות לטיולים ולעבודה." },
-        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "מגפי בלנסטון קלאסיים (Blundstone) בצבע כאמל יוקרתי." },
-        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות לקטנטנים. רכות ונוחות." },
-        { id: 4, name: "נעלי ספורט Hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט נוחות במיוחד מתאימות לריצות והליכות." },
-        { id: 5, name: "נעלי הרים", price: "₪280", category: "all", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות במיוחד למסלולים מאתגרים." },
-        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעליים יוקרתיות מעור במיוחד לשבתות וחגים." }
+        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg", desc: "סנדלי שורש מקוריים המשלבים נוחות ועמידות." },
+        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg", desc: "מגפי בלנסטון קלאסיים בצבע כאמל." },
+        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות ורכות לקטנטנים." },
+        { id: 4, name: "נעלי ספורט Hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט מקצועיות ונוחות." },
+        { id: 5, name: "נעלי הרים", price: "₪280", category: "all", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות למסלולים." },
+        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלי עור יוקרתיות לשבתות וחגים." }
     ];
 
     function renderGrids(filterText = "") {
         const homeGrid = document.getElementById('homeGrid');
         const passoverGrid = document.getElementById('passoverGrid');
         if(!homeGrid || !passoverGrid) return;
-
         homeGrid.innerHTML = "";
         passoverGrid.innerHTML = "";
-
         items.forEach(item => {
             if (item.name.toLowerCase().includes(filterText.toLowerCase())) {
                 const html = `
@@ -228,8 +210,7 @@
 
     function showPage(pageId) {
         document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        const target = document.getElementById(pageId);
-        if(target) target.classList.add('active');
+        document.getElementById(pageId).classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
@@ -237,13 +218,13 @@
         const item = items.find(i => i.id === id);
         const container = document.getElementById('productDetailContent');
         container.innerHTML = `
-            <div class="product-detail">
-                <img src="${item.img}" alt="${item.name}">
-                <div class="detail-text">
+            <div style="display:flex; gap:40px; background:white; padding:40px; border-radius:20px;">
+                <img src="${item.img}" style="width:45%; border-radius:15px;">
+                <div>
                     <h2>${item.name}</h2>
-                    <p class="price" style="font-size:2rem; margin-bottom:15px;">${item.price}</p>
-                    <p style="margin-bottom:30px; line-height:1.6;">${item.desc}</p>
-                    <button class="order-btn" onclick="showPage('contact')">להזמנה טלפונית לחצו כאן</button>
+                    <p style="color:var(--gold); font-size:2rem; font-weight:800;">${item.price}</p>
+                    <p style="margin:20px 0;">${item.desc}</p>
+                    <button class="order-btn" onclick="showPage('contact')">להזמנה טלפונית</button>
                 </div>
             </div>
         `;
@@ -251,12 +232,10 @@
     }
 
     function filterItems() {
-        const text = document.getElementById('mainSearch').value;
-        renderGrids(text);
+        renderGrids(document.getElementById('mainSearch').value);
     }
 
     window.onload = () => renderGrids();
 </script>
-
 </body>
 </html>
