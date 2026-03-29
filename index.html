@@ -13,7 +13,6 @@
             --white: #ffffff;
             --google-blue: #4285F4;
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --font-size-base: 1rem;
         }
 
         /* עיצוב כללי */
@@ -57,10 +56,10 @@
             transition: var(--transition);
             box-shadow: 0 4px 10px rgba(66, 133, 244, 0.3);
         }
-        .maps-btn-nav:hover { transform: translateY(-3px); background-color: #3367D6; box-shadow: 0 6px 15px rgba(66, 133, 244, 0.4); }
+        .maps-btn-nav:hover { transform: translateY(-3px); background-color: #3367D6; }
 
         nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); font-size: 1rem; position: relative; }
+        nav ul li { font-weight: 700; cursor: pointer; transition: var(--transition); }
         nav ul li:hover { color: var(--gold); }
 
         .hours-btn {
@@ -71,110 +70,80 @@
             font-weight: 800;
             cursor: pointer;
             transition: 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            display: flex; align-items: center; gap: 8px;
         }
         .hours-btn:hover { background: var(--white); border-color: var(--gold); color: var(--gold); }
 
-        /* --- דפים ואנימציות --- */
+        /* --- דפים --- */
         .page { display: none; padding: 50px 8%; animation: fadeIn 0.6s ease; }
         .page.active { display: block; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- Hero Sections --- */
+        /* --- Hero --- */
         .hero { 
-            height: 450px; 
+            height: 400px; 
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=2012&auto=format&fit=crop') center/cover; 
-            border-radius: 30px; 
-            margin-bottom: 60px;
+            border-radius: 30px; margin-bottom: 50px;
             display: flex; align-items: center; justify-content: center;
             color: white; text-align: center; flex-direction: column;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        .hero h1 { font-size: 4rem; margin-bottom: 15px; text-shadow: 3px 3px 15px rgba(0,0,0,0.6); }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 10px; }
 
-        /* --- גריד מוצרים --- */
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; }
-
+        /* --- גריד וכרטיסים --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
         .card {
             background: var(--white); border-radius: 20px; overflow: hidden;
-            transition: var(--transition); cursor: pointer; border: 1px solid #eee; position: relative;
+            transition: var(--transition); cursor: pointer; border: 1px solid #eee;
         }
-        .card:hover { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(0,0,0,0.15); border-color: var(--gold); }
-        .card img { width: 100%; height: 350px; object-fit: cover; transition: 0.5s; }
-        .card:hover img { scale: 1.05; }
-        .card-info { padding: 25px; text-align: center; }
-        .card-info h3 { font-size: 1.3rem; margin-bottom: 10px; }
-        .card-info .price { color: var(--gold); font-weight: 800; font-size: 1.4rem; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: var(--gold); }
+        .card img { width: 100%; height: 320px; object-fit: cover; }
+        .card-info { padding: 20px; text-align: center; }
+        .price { color: var(--gold); font-weight: 800; font-size: 1.2rem; }
 
-        /* --- עמוד צרו קשר --- */
-        .contact-container { text-align: center; max-width: 900px; margin: 0 auto; }
-        .contact-card-img { width: 100%; max-width: 700px; border-radius: 30px; box-shadow: 0 25px 50px rgba(0,0,0,0.15); margin-bottom: 40px; }
-        
-        .phone-link { text-decoration: none; color: var(--dark); font-size: 3.5rem; font-weight: 800; transition: 0.3s; display: block; margin: 20px 0; }
+        /* --- צרו קשר --- */
+        .contact-container { text-align: center; max-width: 850px; margin: 0 auto; }
+        .contact-img { width: 100%; max-width: 650px; border-radius: 25px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); margin-bottom: 30px; }
+        .phone-link { text-decoration: none; color: var(--dark); font-size: 3rem; font-weight: 800; display: block; margin: 20px 0; }
         .phone-link:hover { color: var(--gold); }
 
-        /* --- Modals (Popups) --- */
+        /* --- Modals --- */
         .modal {
-            display: none; position: fixed; z-index: 5000; 
-            left: 0; top: 0; width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center;
-            backdrop-filter: blur(8px);
+            display: none; position: fixed; z-index: 5000; left: 0; top: 0; width: 100%; height: 100%; 
+            background-color: rgba(0,0,0,0.8); align-items: center; justify-content: center; backdrop-filter: blur(5px);
         }
         .modal.active { display: flex; }
-        .modal-content {
-            background-color: white; padding: 50px; border-radius: 30px;
-            text-align: center; position: relative; max-width: 550px; width: 90%;
-            box-shadow: 0 30px 70px rgba(0,0,0,0.5);
-        }
-        .close-modal { position: absolute; top: 20px; left: 20px; font-size: 2rem; cursor: pointer; color: #ccc; }
+        .modal-content { background: white; padding: 40px; border-radius: 25px; text-align: center; position: relative; width: 90%; max-width: 500px; }
+        .close-modal { position: absolute; top: 15px; left: 15px; font-size: 1.8rem; cursor: pointer; color: #aaa; }
+        .hours-list { list-style: none; text-align: right; margin: 20px 0; }
+        .hours-list li { border-bottom: 1px solid #eee; padding: 8px 0; display: flex; justify-content: space-between; }
 
-        .hours-list { list-style: none; text-align: right; margin: 25px 0; font-size: 1.2rem; }
-        .hours-list li { border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between; }
-        
-        .phone-big-modal { font-size: 4.5rem; font-weight: 800; color: var(--dark); text-decoration: none; display: block; margin: 30px 0; }
-        .order-btn-big { background: var(--dark); color: white; padding: 18px 50px; border: none; border-radius: 60px; font-weight: 800; font-size: 1.1rem; cursor: pointer; transition: 0.3s; }
-        .order-btn-big:hover { background: var(--gold); }
-
-        /* --- כפתור הנגשה --- */
+        /* --- נגישות --- */
         .accessibility-trigger {
-            position: fixed; bottom: 20px; left: 20px;
-            background: #2b3e50; color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 9999; font-size: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            border: 2px solid white;
+            position: fixed; bottom: 20px; left: 20px; background: #2b3e50; color: white;
+            width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 9999; font-size: 1.5rem; border: 2px solid white;
         }
-
         .accessibility-menu {
-            display: none; position: fixed; bottom: 90px; left: 20px;
-            background: white; width: 280px; border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 20px; z-index: 9999;
+            display: none; position: fixed; bottom: 85px; left: 20px; background: white; width: 260px;
+            border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); padding: 20px; z-index: 9999;
         }
         .accessibility-menu.active { display: block; }
-        .accessibility-menu h4 { margin-bottom: 15px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
-        .acc-btn {
-            display: block; width: 100%; padding: 10px; margin-bottom: 8px;
-            background: #f0f0f0; border: none; border-radius: 8px;
-            text-align: right; cursor: pointer; font-weight: 700; transition: 0.2s;
-        }
-        .acc-btn:hover { background: #e0e0e0; }
+        .acc-btn { display: block; width: 100%; padding: 10px; margin-bottom: 5px; background: #f0f0f0; border: none; border-radius: 8px; text-align: right; cursor: pointer; font-weight: 700; }
         .acc-btn.active { background: var(--gold); color: white; }
 
-        footer { text-align: center; padding: 60px; color: #aaa; border-top: 1px solid #eee; margin-top: 80px; }
+        footer { text-align: center; padding: 50px; color: #aaa; border-top: 1px solid #eee; margin-top: 60px; }
 
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 20px; gap: 15px; }
-            .logo-and-map { flex-direction: column; width: 100%; }
-            .phone-link { font-size: 2.5rem; }
-            .phone-big-modal { font-size: 3rem; }
-            .contact-card-img { width: 100%; border-radius: 15px; }
+            .logo-and-map { flex-direction: column; }
+            .phone-link { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="accessibility-trigger" onclick="toggleAccMenu()" title="תפריט נגישות">♿</div>
+<div class="accessibility-trigger" onclick="toggleAccMenu()">♿</div>
 <div class="accessibility-menu" id="accMenu">
     <h4>תפריט נגישות</h4>
     <button class="acc-btn" onclick="accAction('zoom-in')">➕ הגדל טקסט</button>
@@ -182,14 +151,14 @@
     <button class="acc-btn" onclick="accAction('grayscale')" id="btn-gray">🌓 שחור לבן</button>
     <button class="acc-btn" onclick="accAction('contrast')" id="btn-contrast">👁️ ניגודיות גבוהה</button>
     <button class="acc-btn" onclick="accAction('underline')" id="btn-underline">🔗 הדגשת קישורים</button>
-    <button class="acc-btn" onclick="accAction('reset')" style="background: #ff4444; color: white; margin-top: 10px;">🔄 איפוס נגישות</button>
+    <button class="acc-btn" onclick="accAction('reset')" style="background: #ff4444; color: white;">🔄 איפוס</button>
 </div>
 
 <header>
     <div class="logo-and-map">
         <div class="logo-area" onclick="showPage('home')">נעלי <span>שני</span></div>
-        <a href="https://maps.google.com/?q=מתחם+עליון+103+שער+בנימין" target="_blank" class="maps-btn-nav">
-            ניווט ב-Google Maps 📍
+        <a href="https://www.google.com/maps?q=31.866083,35.260000" target="_blank" class="maps-btn-nav">
+            ניווט למיקום המדויק 📍
         </a>
     </div>
     <nav>
@@ -205,7 +174,7 @@
 <div id="hoursModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('hoursModal')">×</span>
-        <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 20px;">שעות פעילות</h2>
+        <h2 style="color: var(--gold);">שעות פעילות</h2>
         <ul class="hours-list">
             <li><span>יום ראשון:</span> <span>9:30–20:00</span></li>
             <li><span>יום שני:</span> <span>9:30–20:00</span></li>
@@ -215,17 +184,15 @@
             <li><span>יום שישי:</span> <span>9:30–14:00</span></li>
             <li><span>יום שבת:</span> <span>סגור</span></li>
         </ul>
-        <p style="color: #888; font-style: italic;">* ייתכנו שינויים בשעות הפעילות</p>
     </div>
 </div>
 
 <div id="orderModal" class="modal">
     <div class="modal-content">
         <span class="close-modal" onclick="closeModal('orderModal')">×</span>
-        <h2>הזמנה טלפונית מהירה</h2>
-        <p style="margin-top: 15px;">חייגו אלינו לביצוע הזמנה:</p>
-        <a href="tel:029972662" class="phone-big-modal">02-997-2662</a>
-        <button class="order-btn-big" onclick="closeModal('orderModal')">חזרה לקניות</button>
+        <h2>הזמנה טלפונית</h2>
+        <a href="tel:029972662" style="font-size: 2.5rem; font-weight: 800; color: var(--dark); text-decoration: none; display: block; margin: 20px 0;">02-997-2662</a>
+        <button onclick="closeModal('orderModal')" style="background: var(--dark); color: white; padding: 10px 30px; border-radius: 50px; border: none; cursor: pointer;">חזרה</button>
     </div>
 </div>
 
@@ -247,9 +214,8 @@
 
 <main id="contact" class="page">
     <div class="contact-container">
-        <img src="https://i.ibb.co/v4m86mS/IMG-20260215-WA0010.jpg" class="contact-card-img" alt="נעלי שני שער בנימין">
-        
-        <div style="margin-top: 30px;">
+        <img src="IMG-20260215-WA0010.jpg" alt="נעלי שני שער בנימין" class="contact-img">
+        <div style="margin-top: 20px;">
             <p style="font-size: 1.5rem; font-weight: 700;">חייגו אלינו:</p>
             <a href="tel:029972662" class="phone-link">02-997-2662</a>
             <p style="font-size: 1.3rem; color: #555;">📍 מתחם עליון 103, שער בנימין</p>
@@ -282,8 +248,7 @@
         const homeGrid = document.getElementById('homeGrid');
         const passoverGrid = document.getElementById('passoverGrid');
         if(!homeGrid || !passoverGrid) return;
-        homeGrid.innerHTML = "";
-        passoverGrid.innerHTML = "";
+        homeGrid.innerHTML = ""; passoverGrid.innerHTML = "";
         
         items.forEach(item => {
             const html = `
@@ -293,74 +258,48 @@
                         <h3>${item.name}</h3>
                         <p class="price">${item.price}</p>
                     </div>
-                </div>
-            `;
+                </div>`;
             homeGrid.innerHTML += html;
             if (item.category === "passover") passoverGrid.innerHTML += html;
         });
     }
 
-    function showPage(pageId) {
-        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-        document.getElementById(pageId).classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
     function viewProduct(id) {
         const item = items.find(i => i.id === id);
-        const container = document.getElementById('productDetailContent');
-        container.innerHTML = `
-            <div style="display:flex; gap:50px; background:white; padding:50px; border-radius:30px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); flex-wrap:wrap;">
-                <img src="${item.img}" style="width:45%; min-width:300px; border-radius:20px; object-fit:cover; flex-grow:1;">
-                <div style="flex:1; min-width:300px; display: flex; flex-direction: column; justify-content: center;">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 15px;">${item.name}</h2>
-                    <p style="color:var(--gold); font-size:2.5rem; font-weight:800; margin-bottom:25px;">${item.price}</p>
-                    <p style="font-size: 1.2rem; line-height: 1.8; color: #555; margin-bottom: 40px;">${item.desc}</p>
-                    <button class="order-btn-big" onclick="openModal('orderModal')">להזמנה טלפונית מהירה</button>
+        document.getElementById('productDetailContent').innerHTML = `
+            <div style="display:flex; gap:40px; background:white; padding:40px; border-radius:25px; flex-wrap:wrap;">
+                <img src="${item.img}" style="width:40%; min-width:300px; border-radius:20px; object-fit:cover;">
+                <div style="flex:1; min-width:300px;">
+                    <h2 style="font-size: 2.5rem;">${item.name}</h2>
+                    <p style="color:var(--gold); font-size:2rem; font-weight:800; margin:15px 0;">${item.price}</p>
+                    <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">${item.desc}</p>
+                    <button onclick="openModal('orderModal')" style="background:var(--dark); color:white; padding:15px 40px; border-radius:50px; border:none; font-weight:800; cursor:pointer;">להזמנה טלפונית</button>
                 </div>
-            </div>
-        `;
+            </div>`;
         showPage('productPage');
     }
 
-    function toggleAccMenu() {
-        document.getElementById('accMenu').classList.toggle('active');
+    function showPage(id) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(id).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function toggleAccMenu() { document.getElementById('accMenu').classList.toggle('active'); }
+    
     let currentZoom = 1;
     function accAction(action) {
-        const body = document.body;
-        if(action === 'grayscale') {
-            body.classList.toggle('grayscale');
-            document.getElementById('btn-gray').classList.toggle('active');
-        } else if(action === 'contrast') {
-            body.classList.toggle('high-contrast');
-            document.getElementById('btn-contrast').classList.toggle('active');
-        } else if(action === 'underline') {
-            body.classList.toggle('underline-links');
-            document.getElementById('btn-underline').classList.toggle('active');
-        } else if(action === 'zoom-in') {
-            currentZoom += 0.1;
-            body.style.fontSize = currentZoom + 'em';
-        } else if(action === 'zoom-out') {
-            currentZoom -= 0.1;
-            body.style.fontSize = currentZoom + 'em';
-        } else if(action === 'reset') {
-            body.className = '';
-            body.style.fontSize = '1em';
-            currentZoom = 1;
-            document.querySelectorAll('.acc-btn').forEach(b => b.classList.remove('active'));
-        }
+        const b = document.body;
+        if(action === 'grayscale') b.classList.toggle('grayscale');
+        else if(action === 'contrast') b.classList.toggle('high-contrast');
+        else if(action === 'underline') b.classList.toggle('underline-links');
+        else if(action === 'zoom-in') { currentZoom += 0.1; b.style.fontSize = currentZoom + 'em'; }
+        else if(action === 'zoom-out') { currentZoom -= 0.1; b.style.fontSize = currentZoom + 'em'; }
+        else if(action === 'reset') { b.className = ''; b.style.fontSize = '1em'; currentZoom = 1; }
     }
 
     function openModal(id) { document.getElementById(id).classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
-
-    window.onclick = function(event) {
-        if (event.target.classList.contains('modal')) {
-            event.target.classList.remove('active');
-        }
-    }
 
     window.onload = renderGrids;
 </script>
