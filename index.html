@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>נעלי שני | הקולקציה הרשמית</title>
+    <title>נעלי שני |נעליים לכל המשפחה</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -123,13 +123,12 @@
     <nav>
         <ul>
             <li onclick="showPage('home')">דף הבית</li>
-            <li onclick="showPage('passover')">קולקציית פסח</li>
+            <li onclick="showPage('passover')">קולקצייה </li>
             <li onclick="showPage('contact')">צרו קשר</li>
         </ul>
     </nav>
-    <div class="search-bar">
-        <input type="text" id="mainSearch" placeholder="חפש דגם (בלנסטון, שורש...)" onkeyup="filterItems()">
-        <span>🔍</span>
+    
+       
     </div>
 </header>
 
@@ -170,12 +169,12 @@
 
 <script>
     const items = [
-        { id: 1, name: "סנדלי שורש", price: "₪299", category: "all", img: "https://images.unsplash.com/photo-1603487788363-2a211e046ad2?w=600", desc: "סנדלי שורש מקוריים המשלבים נוחות מקסימלית ועמידות לטיולים ולעבודה." },
-        { id: 2, name: "בלנסטון כאמל", price: "₪649", category: "all", img: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600", desc: "מגפי בלנסטון קלאסיים (Blundstone) בצבע כאמל יוקרתי. שילוב של סטייל ואיכות." },
-        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://images.unsplash.com/photo-1519452635265-7b1fbfd1e4e0?w=600", desc: "נעלי חג אלגנטיות לקטנטנים. רכות, נוחות ומעוצבות במיוחד לאירועים." },
-        { id: 4, name: "נעלי בן ישי", price: "₪480", category: "all", img: "https://images.unsplash.com/photo-1449241595196-485d289c02e1?w=600", desc: "נעלי בן ישי הידועות באיכות העור ובעבודת היד המוקפדת. נוחות לאורך כל היום." },
-        { id: 5, name: "נעלי לק לבנות - פסח", price: "₪189", category: "passover", img: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?w=600", desc: "נעל לק מבריקה וחגיגית, מושלמת לליל הסדר." },
-        { id: 6, name: "אלגנט גברים פרימיום", price: "₪520", category: "passover", img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?w=600", desc: "נעלי ערב יוקרתיות מעור איטלקי לקולקציית פסח." }
+        { id: 1, name: "סנדלי שורש", price: "₪200", category: "all", img: "https://limeshoes.co.il/wp-content/uploads/2021/08/woman.jpg: "סנדלי שורש מקוריים המשלבים נוחות מקסימלית ועמידות לטיולים ולעבודה." },
+        { id: 2, name: "בלנסטון כאמל", price: "₪250", category: "all", img: "https://d3m9l0v76dty0.cloudfront.net/system/photos/10403523/original/56bb9ed09e7d9b622fd3e2cd5846e514.jpg: "מגפי בלנסטון קלאסיים (Blundstone) בצבע כאמל יוקרתי. שילוב של סטייל ואיכות." },
+        { id: 3, name: "נעלי חג לתינוקות", price: "₪159", category: "passover", img: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcRSJ2pSW00ZpHGd5NP1RZ1TZ0QA9BMkBT7we2Pmpi7_eltzr19PD0PCKSzPJLS8uk1iasRf8DBzHccgYU8gdrJ6_O5YO0-gBZhL9zfXx93rrDTBOl-II-nkBWo5r2BTcIuiZ-uVDMM&usqp=CAc", desc: "נעלי חג אלגנטיות לקטנטנים. רכות, נוחות ומעוצבות במיוחד לאירועים." },
+        { id: 4, name: "נעלי ספורט hoka", price: "₪480", category: "all", img: "https://footlocker.co.il/cdn/shop/files/HOK252M-BWHT-1.jpg?v=1740645730&width=2400", desc: "נעלי ספורט נוחות במיוחד מתאימים לריצות והליכות ." },
+        { id: 5, name: "נעלי הרים", price: "₪280", category: "passover", img: "https://ertzcamping.co.il/images/itempics/8141_27112024154538_large.jpg", desc: "נעלי הרים איכותיות במיוחד." },
+        { id: 6, name: "נעלי אלגנט גברים", price: "₪400", category: "passover", img: "https://xsosshirts.co.il/media/source/n12_1.jpg", desc: "נעלים יוקרתיות מעורבמיוחד לשבתות וחגים." }
     ];
 
     function renderGrids(filterText = "") {
